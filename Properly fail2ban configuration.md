@@ -95,7 +95,7 @@ Then in your jail you would rather use
 
 
 **[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
-**[A]**To reset fail2ban completely and start off fresh<br/><br/>
+**[A]** To reset fail2ban completely and start off fresh<br/><br/>
 Stop Fail2Ban<br/>
 `sudo service fail2ban stop`<br/><br/>
 Empty the Fail2Ban LogFile<br/>
