@@ -105,3 +105,18 @@ Delete the Fail2Ban SQLite Database File
 Restart Fail2Ban
 `sudo service fail2ban restart`
 Also consider deleting any of your Apache, Nginx or Auth log files or just the entries that may contain your own IP address used during testing, as once Fail2Ban starts again, depending on your jail settings, it will just block you again.
+
+**[Q]** Fail2Ban will not start and is giving me the following error message "Job for fail2ban.service failed. See 'systemctl status fail2ban.service' and 'journalctl -xn' for details." but checking those does not help me trace where my error is.
+**[A]** 
+Stop the Failban Server by running
+`sudo service fail2ban stop`
+Make sure the Fail2Ban client is also not running by running the following
+`sudo fail2ban-client -vvv -x stop`
+Then start the Fail2Ban client in verbose mode as follows
+`sudo fail2ban-client -vvv -x start`
+This will show you exactly in which jail, filter or action your error lies.
+Once you can start the fail2ban-client successfully using `sudo fail2ban-client -vvv -x start`
+Then stop it again using 
+`sudo fail2ban-client -vvv -x stop`
+and then start the Fail2Ban Server
+`sudo service fail2ban restart`
