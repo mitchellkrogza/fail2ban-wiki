@@ -111,6 +111,15 @@ Also consider deleting any of your Apache, Nginx or Auth log files or just the e
 
 **[Q]** Fail2Ban will not start and is giving me the following error message "Job for fail2ban.service failed. See 'systemctl status fail2ban.service' and 'journalctl -xn' for details." but checking those does not help me trace where my error is.<br/>
 **[A]** <br/>
+First take a look in journal log of fail2ban.service by running<br/>
+`journalctl -ru fail2ban`<br/><br/>
+If you find and fix your error then reload fail2ban using<br/>
+`sudo service fail2ban restart`<br/><br/>
+
+Your fail2ban.log file in /var/log/fail2ban.log is also a very good place to keep a check for errors.<br/><br/>
+
+**For Heavy Debugging Users**<br/>
+You can run the Fail2Ban-Client in a very verbose mode using the following commands which will show you all output when Fail2Ban is loading, this is also a useful method for tracing errors in jails, filters and actions.<br/><br/> 
 Stop the Failban Server by running<br/>
 `sudo service fail2ban stop`<br/><br/>
 Make sure the Fail2Ban client is also not running by running the following<br/>
