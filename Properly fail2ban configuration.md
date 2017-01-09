@@ -71,7 +71,8 @@ fail2ban-client -vvd
 You can also get and set corresponding parameter individually, using fail2ban client-server communication protocol. For example:
 ```bash
 fail2ban-client set pam-generic logencoding UTF-8
-fail2ban-client set nginx findtime 10m```
+fail2ban-client set nginx findtime 10m
+```
 
 **[Q]** How should I correctly modify log file locations other than in the jail settings<br/>
 **[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings<br/>
