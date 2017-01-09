@@ -95,29 +95,29 @@ Then in your jail you would rather use
 
 
 **[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
-**[A]**
+**[A]**<br/>
 To reset fail2ban completely and start off fresh<br/>
-Stop Fail2Ban
-`sudo service fail2ban stop`<br/>
-Empty the Fail2Ban LogFile
-`sudo truncate -s 0 /var/log/fail2ban.log`<br/>
-Delete the Fail2Ban SQLite Database File
-`sudo rm /var/lib/fail2ban/fail2ban.sqlite3`<br/>
-Restart Fail2Ban
-`sudo service fail2ban restart`<br/>
-Also consider deleting any of your Apache, Nginx or Auth log files or just the entries that may contain your own IP address used during testing, as once Fail2Ban starts again, depending on your jail settings, it will just block you again.
+Stop Fail2Ban<br/>
+`sudo service fail2ban stop`<br/><br/>
+Empty the Fail2Ban LogFile<br/>
+`sudo truncate -s 0 /var/log/fail2ban.log`<br/><br/>
+Delete the Fail2Ban SQLite Database File<br/>
+`sudo rm /var/lib/fail2ban/fail2ban.sqlite3`<br/><br/>
+Restart Fail2Ban<br/>
+`sudo service fail2ban restart`<br/><br/>
+Also consider deleting any of your Apache, Nginx or Auth log files or just the entries that may contain your own IP address used during testing, as once Fail2Ban starts again, depending on your jail settings, it will just block you again.<br/><br/>
 
 **[Q]** Fail2Ban will not start and is giving me the following error message "Job for fail2ban.service failed. See 'systemctl status fail2ban.service' and 'journalctl -xn' for details." but checking those does not help me trace where my error is.<br/>
-**[A]** 
-Stop the Failban Server by running
-`sudo service fail2ban stop`<br/>
-Make sure the Fail2Ban client is also not running by running the following
-`sudo fail2ban-client -vvv -x stop`<br/>
-Then start the Fail2Ban client in verbose mode as follows
-`sudo fail2ban-client -vvv -x start`<br/>
+**[A]** <br/>
+Stop the Failban Server by running<br/>
+`sudo service fail2ban stop`<br/><br/>
+Make sure the Fail2Ban client is also not running by running the following<br/>
+`sudo fail2ban-client -vvv -x stop`<br/><br/>
+Then start the Fail2Ban client in verbose mode as follows<br/>
+`sudo fail2ban-client -vvv -x start`<br/><br/>
 This will show you exactly in which jail, filter or action your error lies.
-Once you can start the fail2ban-client successfully using `sudo fail2ban-client -vvv -x start`<br/>
+Once you can start the fail2ban-client successfully using `sudo fail2ban-client -vvv -x start`<br/><br/>
 Then stop it again using <br/>
-`sudo fail2ban-client -vvv -x stop`
-and then start the Fail2Ban Server
-`sudo service fail2ban restart`
+`sudo fail2ban-client -vvv -x stop`<br/><br/>
+and then start the Fail2Ban Server<br/>
+`sudo service fail2ban restart`<br/><br/>
