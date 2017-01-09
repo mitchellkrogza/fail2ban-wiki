@@ -74,24 +74,22 @@ fail2ban-client set pam-generic logencoding UTF-8
 fail2ban-client set nginx findtime 10m
 ```
 
-**[Q]** How should I correctly modify log file locations other than in the jail settings<br/>
-**[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings<br/><br/>
+**[Q]** How should I correctly modify log file locations other than in the jail settings or messing with master .conf files?<br/>
+**[A]** To make a modification to the default log file locations you should create a .local file of paths-common.conf or paths-debian.com (whichever you are using in jail.local) and make changes only in your .local files which keeps it nicely structured for your jail(s) settings and avoids problems when Fail2Ban is updated<br/><br/>
 
-Eg: jail.local
-`before = paths-debian.conf`
-or
-`before = paths-common.conf`
+To create your .local file<br/>
+`sudo cp /etc/fail2ban/paths-common.conf /etc/fail2ban/paths-common.local`<br/><br/>
 
-For instance if you want an Nginx filter to read all your Nginx Access Logs for multiple web sites
+Now if you want for example an Nginx filter to read all your Nginx Access Logs for multiple web sites<br/>
 
-Instead of using in your jail:
-`logpath = /var/log/nginx/*access*.log`
+Instead of using in your jail:<br/>
+`logpath = /var/log/nginx/*access*.log`<br/><br/>
 
-Rather edit paths-common.conf or paths-debian.conf (whichever you are using) and change the line
-`nginx_access_log = /var/log/nginx/*access*.log`
+Edit the line in paths-common.local or paths-debian.local (whichever you are using) and add change the nginx_access_log line as follows<br/>
+`nginx_access_log = /var/log/nginx/*access*.log`<br/><br/>
 
-Then in your jail you would rather use
-`logpath = %(nginx_access_log)s`
+Then in your jail you would rather use<br/>
+`logpath = %(nginx_access_log)s`<br/><br/>
 
 
 **[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
