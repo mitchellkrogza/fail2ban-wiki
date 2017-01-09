@@ -94,6 +94,11 @@ Then in your jail you would rather use<br/>
 
 **[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
 **[A]** To reset fail2ban completely and start off fresh<br/><br/>
+In newer versions of Fail2Ban you can simply run the command<br/>
+`sudo fail2ban-client set <JAIL> unbanip <IP>`
+Which will remove all entries for that IP in both the fail2ban.log file and fail2ban.sqlite3 database file.<br/><br/>
+
+Should you ever want to completely clear and reset the Fail2Ban log file and SQLite database for whatever reason you can do the following:<br/><br/>
 Stop Fail2Ban<br/>
 `sudo service fail2ban stop`<br/><br/>
 Empty the Fail2Ban LogFile<br/>
