@@ -73,8 +73,8 @@ You can also get and set corresponding parameter individually, using fail2ban cl
 fail2ban-client set pam-generic logencoding UTF-8
 fail2ban-client set nginx findtime 10m```
 
-**[Q]** How should I correctly modify log file locations other than in the jail settings
-**[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings
+**[Q]** How should I correctly modify log file locations other than in the jail settings<br/>
+**[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings<br/>
 
 Eg: jail.local
 `before = paths-debian.conf`
@@ -93,9 +93,9 @@ Then in your jail you would rather use
 `logpath = %(nginx_access_log)s`
 
 
-**[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?
+**[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
 **[A]**
-To reset fail2ban completely and start off fresh
+To reset fail2ban completely and start off fresh<br/>
 Stop Fail2Ban
 `sudo service fail2ban stop`
 Empty the Fail2Ban LogFile
@@ -106,9 +106,9 @@ Restart Fail2Ban
 `sudo service fail2ban restart`
 Also consider deleting any of your Apache, Nginx or Auth log files or just the entries that may contain your own IP address used during testing, as once Fail2Ban starts again, depending on your jail settings, it will just block you again.
 
-**[Q]** Fail2Ban will not start and is giving me the following error message "Job for fail2ban.service failed. See 'systemctl status fail2ban.service' and 'journalctl -xn' for details." but checking those does not help me trace where my error is.
+**[Q]** Fail2Ban will not start and is giving me the following error message "Job for fail2ban.service failed. See 'systemctl status fail2ban.service' and 'journalctl -xn' for details." but checking those does not help me trace where my error is.<br/>
 **[A]** 
-Stop the Failban Server by running
+Stop the Failban Server by running<br/>
 `sudo service fail2ban stop`
 Make sure the Fail2Ban client is also not running by running the following
 `sudo fail2ban-client -vvv -x stop`
