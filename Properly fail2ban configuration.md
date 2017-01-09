@@ -75,7 +75,7 @@ fail2ban-client set nginx findtime 10m
 ```
 
 **[Q]** How should I correctly modify log file locations other than in the jail settings<br/>
-**[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings<br/>
+**[A]** To make a modification to default log file locations you should edit paths-common.conf or paths-debian.conf (whichever you are using in jail.local) and make changes there which keeps it nicely structured for your jail(s) settings<br/><br/>
 
 Eg: jail.local
 `before = paths-debian.conf`
@@ -95,8 +95,7 @@ Then in your jail you would rather use
 
 
 **[Q]** I messed up Fail2Ban during Testing and blocked out my own IP address, how do I completely reset Fail2Ban to get it off to a clean start?<br/>
-**[A]**<br/>
-To reset fail2ban completely and start off fresh<br/>
+**[A]**To reset fail2ban completely and start off fresh<br/><br/>
 Stop Fail2Ban<br/>
 `sudo service fail2ban stop`<br/><br/>
 Empty the Fail2Ban LogFile<br/>
